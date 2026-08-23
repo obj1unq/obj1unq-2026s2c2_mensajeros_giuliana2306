@@ -99,3 +99,32 @@ object moto {
 		return peso
 	}
 }
+
+/*Cuales son los polimorfismos?
+peso()
+puedeRealizarLlamada()
+puedePasar(_mensajero)
+
+
+definir Tipo de los objetos polimórficos : Mensajero y destino.
+
+mensajes de los tipos de los obejtos polimorficos : 
+Tipo Destino: precio(), puedePasar(mensajero)((
+Tipo Mensajero: peso(), puedeRealizarLlamada()
+
+quienes usan los mensajes polimórficos:
+peso() = puenteDeBrooklyn
+puedeRealizarLlamada() = laMatrix
+puedePasar() = paquete 
+precio() = paquete
+
+Dibujar un diagrama estático en que se vea la relación entre los objetos y los tipos polimórficos
+
+
+
+Mencionar un mensaje que sea una orden y otro que sea una consulta
+
+En tu solución, el mensajero es un atributo del paquete o no? Por qué? Pensar como sería la manera alternativa.
+
+Revisá que no haya quedado precálculo en el peso de Sara
+*/
