@@ -1,100 +1,101 @@
 object paquete {
+	var destino = puenteDeBrooklyn
 	var pago = false
 
-	method pagar() {
-		pago = True
-  	} 
+	method modificarDestino(_destino) {
+		destino =  _destino
+	}
+	method precio() {
+		return destino.precio()
+	}
 	method estaPago() {
-		return pago
+		pago = true
 	}
-	method precio(_destino) {
-		return if (_destino == puenteDeBrooklyn) {
-			      150 
-			   } else {
-				500
-			   }
-	}
-	method puedeEntregarse() {
-		return pago 
+	method puedeSerEntregado(_mensajero) {
+		return pago && _mensajero.dejaPasar()
 	}
 }
 
 object puenteDeBrooklyn {
-	
-	method dejaPasar(_quierePasar) {
-		return if (_quierePasar.peso() < 1001) {
-			   True 
-		       } else {
-				False
-			   }
-	} 
+
+	method precio() {
+		return 150
+	}
+	method dejaPasar(_mensajero) {
+		return _mensajero.peso() < 1001
+	}
 }
 
 object laMatrix {
-	
-	method dejaPasar(_personaMensajera) {
-		_personaMensajera.puedeRealizarLlamada()
+
+	method precio() {
+		return 500
+	}
+	method dejaPasar(_mensajero) {
+		return _mensajero.puedeRealizarLlamada()
 	}
 }
 
 object jeanGray {
-	const peso = 65 
+	const peso = 65
 
 	method puedeRealizarLlamada() {
-		return true
-	}
-	method peso() {
-		return peso 
-	}
-}
-
-object neo {
-	const peso = 0
-	var tieneCredito = true
-
-	method vuela() {
 		return true
 	}
 	method peso() {
 		return peso
 	}
-	method tieneCelular() {
-		return true
+}
+
+object neo {
+	const peso  = 0
+	var tieneCredito = true
+
+	method peso() {
+		return peso
 	}
 	method puedeRealizarLlamada() {
 		return tieneCredito
 	}
+	method noTieneCredito() {
+		tieneCredito = false 
+	}
 }
 
 object saraConnor {
-	var peso = 0
-	var vehiculo 
+	var peso = 70
+	var transporte = camion
 
-	method viajaEn(_vehiculo) {
-		vehiculo = _vehiculo
+	method puedeRealizarLlamada() {
+		return false 
 	}
 	method peso() {
-		if (vehiculo == camion) {
-			return peso + camion.peso() + camion.cantDeAcoplados() * 500
-		} else {
-			return peso + moto.peso()
-		}
+		return peso + transporte.peso()
 	}
-	method puedeRealizarLlamada() {
-		return false
+    method cambiarPeso(_peso) {
+		peso = _peso
+	}
+	method cambiarTransporte(_transporte) {
+		transporte = _transporte
+	}
+}
+
+object camion {
+	var peso = 500
+	var cantAcoplados = 0
+
+	method agregarAcoplado(_acoplado) {
+		cantAcoplados = cantAcoplados + _acoplado
+	}
+	method peso() {
+		return peso + cantAcoplados * 500
 	}
 }
 
 object moto {
-	const peso = 100 
-}
-object camion {
-	const peso = 500
-	var acoplados = 0
+	const peso = 100
 
-	method cantDeAcoplados() {
-		return acoplados
+	method peso() {
+		return peso
 	}
-
 }
-
