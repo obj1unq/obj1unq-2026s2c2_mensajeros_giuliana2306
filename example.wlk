@@ -12,7 +12,7 @@ object paquete {
 		pago = true
 	}
 	method puedeSerEntregado(_mensajero) {
-		return pago && _mensajero.dejaPasar()
+		return pago && destino.puedePasar(_mensajero)
 	}
 }
 
@@ -21,7 +21,7 @@ object puenteDeBrooklyn {
 	method precio() {
 		return 150
 	}
-	method dejaPasar(_mensajero) {
+	method puedePasar(_mensajero) {
 		return _mensajero.peso() < 1001
 	}
 }
@@ -31,7 +31,7 @@ object laMatrix {
 	method precio() {
 		return 500
 	}
-	method dejaPasar(_mensajero) {
+	method puedePasar(_mensajero) {
 		return _mensajero.puedeRealizarLlamada()
 	}
 }
